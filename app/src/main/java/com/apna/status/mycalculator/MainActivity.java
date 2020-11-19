@@ -72,18 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void addLayout(String textViewText, String buttonText1, String buttonText2) {
 
-        insertSingleItem();
-//        View layout2 = LayoutInflater.from(this).inflate(R.layout.single_items_add, mLinearLayout, false);
-//
-//        AppCompatTextView mAppCompatTextView1 = layout2.findViewById(R.id.mClass_tv);
-//        AppCompatTextView mAppCompatTextView2 = layout2.findViewById(R.id.mGrade_tv);
-//        AppCompatTextView mAppCompatTextView3 = layout2.findViewById(R.id.mCredits_tv);
-//
-//        mAppCompatTextView1.setText(textViewText);
-//        mAppCompatTextView2.setText(buttonText1);
-//        mAppCompatTextView3.setText(buttonText2);
-//        mLinearLayout.addView(layout2);
-
+//        insertSingleItem();
+        modelCalculatorArrayList = setRecyclerViewList();
+        mCalculatorAdapter.notifyDataSetChanged();
     }
     private void insertSingleItem() {
         ModelCalculator mModelCalculator = new ModelCalculator();
