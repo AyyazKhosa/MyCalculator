@@ -4,13 +4,13 @@ package com.apna.status.mycalculator;
 public class ModelCalculator {
     private String ViewClass;
     private String Grade;
-    private String Credits;
+    private int Credits;
 
-    public String getCredits() {
+    public int getCredits() {
         return Credits;
     }
 
-    public void setCredits(String credits) {
+    public void setCredits(int credits) {
         Credits = credits;
     }
 

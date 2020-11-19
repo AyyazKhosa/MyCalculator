@@ -51,8 +51,8 @@ public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorAdapter.Vi
         // so that it knows what item in modelCalculatorArrayList to update
 //        holder.myCustomEditTextListener.updatePosition(holder.getAdapterPosition());
 //        holder.myCustomEditTextListener1.updatePosition(holder.getAdapterPosition());
-        holder.mGradeLayout.setText(modelCalculatorArrayList.get(holder.getAdapterPosition()).getGrade());
-        holder.mAppCompatTextView3.setText(modelCalculatorArrayList.get(holder.getAdapterPosition()).getCredits());
+//        holder.mGradeLayout.setText(modelCalculatorArrayList.get(holder.getAdapterPosition()).getGrade());
+//        holder.mAppCompatTextView3.setText(modelCalculatorArrayList.get(holder.getAdapterPosition()).getCredits());
 
         holder.mAppCompatTextView3.addTextChangedListener(new TextWatcher() {
             @Override
@@ -63,7 +63,7 @@ public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorAdapter.Vi
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.d("afterTextChanged", "afterTextChanged: " + s.toString());
-                modelCalculatorArrayList.get(position).setCredits(s.toString());
+                modelCalculatorArrayList.get(position).setCredits(Integer.parseInt(s.toString()));
             }
 
             @Override
@@ -164,7 +164,7 @@ public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorAdapter.Vi
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             Log.d("onTextChanged", "onTextChanged: " + charSequence.toString());
-            modelCalculatorArrayList.get(position).setCredits(charSequence.toString());
+            modelCalculatorArrayList.get(position).setCredits(Integer.parseInt(charSequence.toString()));
         }
 
         @Override
