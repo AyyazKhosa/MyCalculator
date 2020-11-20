@@ -20,6 +20,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private AppCompatButton mAddClassBtn;
@@ -30,8 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CalculatorAdapter mCalculatorAdapter;
     private RecyclerView mLayout1;
     private ArrayList<ModelCalculator> modelCalculatorArrayList = new ArrayList<>();
-    ArrayList<Double> gradesValue = new ArrayList<>();
 
+
+    HashMap<String, Double> map
+            = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,68 +92,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                            gradesValue = 4.03;
                                     number = modelCalculatorArrayList.get(i).getCredits();
 
-                                    gradesValue.add(4.3 * number);
-
+                                    //gradesValue.add(4.3 * number);
+                                    map.put(grades,4.3 * number);
 
                                     break;
                                 case "A":
 //                            gradesValue = 4.00;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(4.00 * number);
+//                                    gradesValue.add(4.00 * number);
+                                    map.put(grades,4.00 * number);
                                     break;
                                 case "A-":
 //                            gradesValue = 3.07;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(3.7 * number);
+//                                    gradesValue.add(3.7 * number);
+                                    map.put(grades,3.7 * number);
                                     break;
                                 case "B+":
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(3.3 * number);
+//                                    gradesValue.add(3.3 * number);
+                                    map.put(grades,3.3 * number);
                                     break;
 //                            gradesValue = 3.03;
                                 case "B":
 //                            gradesValue = 3.00;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(3.00 * number);
+//                                    gradesValue.add(3.00 * number);
+                                    map.put(grades,3.00 * number);
                                     break;
                                 case "B-":
 //                            gradesValue = 2.07;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(2.7 * number);
+//                                    gradesValue.add(2.7 * number);
+                                    map.put(grades,2.7 * number);
                                     break;
                                 case "C+":
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(2.3 * number);
+//                                    gradesValue.add(2.3 * number);
+                                    map.put(grades,2.3 * number);
                                     break;
 //                            gradesValue = 2.03;
                                 case "C":
 //                            gradesValue = 2.00;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(2.00 * number);
+//                                    gradesValue.add(2.00 * number);
+                                    map.put(grades,2.00 * number);
                                     break;
                                 case "C-":
 //                            gradesValue = 2.00;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(1.7 * number);
+//                                    gradesValue.add(1.7 * number);
+                                    map.put(grades,1.7 * number);
                                     break;
                                 case "D+":
 //                            gradesValue = 1.03;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(1.3 * number);
+//                                    gradesValue.add(1.3 * number);
+                                    map.put(grades,1.3 * number);
                                     break;
                                 case "D":
 //                            gradesValue = 1.00;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(1.00 * number);
+//                                    gradesValue.add(1.00 * number);
+                                    map.put(grades,1.00 * number);
                                     break;
                                 case "D-":
 //                            gradesValue = 0.07;
                                     number = modelCalculatorArrayList.get(i).getCredits();
-                                    gradesValue.add(0.7 * number);
+//                                    gradesValue.add(0.7 * number);
+                                    map.put(grades,0.7 * number);
                                     break;
                                 case "F":
 //                            gradesValue = 0.00;
-                                    gradesValue.add(0.00 * number);
+                                    map.put(grades,0.00 * number);
+//                                    gradesValue.add(0.00 * number);
                                     break;
                             }
                         }else {
@@ -160,12 +177,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(this, "Null Value", Toast.LENGTH_SHORT).show();
                     }
                     if (i + 1 == modelCalculatorArrayList.size()) {
+                        Set<String> keySet = map.keySet();
+                        ArrayList<String> gradesValue = new ArrayList<String>(keySet);
                         calculatorGpa(totalGrade);
                     }
                 }
 
 
-                Toast.makeText(this, "total" + gradesValue, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "total" + gradesValue, Toast.LENGTH_SHORT).show();
 
 
             } else {
@@ -175,15 +194,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calculatorGpa(int totalGrade) {
+
+        Collection<Double> values = map.values();
+
+        // Creating an ArrayList of values
+        ArrayList<Double> listOfValues
+                = new ArrayList<Double>(values);
+
         double mPointTotal = 0;
-        for (int k = 0; k < gradesValue.size(); k++) {
-            mPointTotal += gradesValue.get(k);
+        for (int k = 0; k < listOfValues.size(); k++) {
+            mPointTotal += listOfValues.get(k);
         }
         double gpa = mPointTotal / totalGrade;
-        String n= String.valueOf(gpa);
+//        String n= String.valueOf(gpa);
         String nn= String.valueOf(totalGrade);
         mPrevious.setText(nn);
-//        Log.d("TotalGradeValue", "calculatorGpa: point" + mPointTotal / totalGrade);
+        Log.d("TotalGradeValue", "calculatorGpa: point" +mPointTotal);
+        String n=String.format("%.3f", gpa);
         mPreviousGpa_tv.setText(n);
     }
 

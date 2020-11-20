@@ -121,7 +121,8 @@ public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorAdapter.Vi
                 } else if (s.toString().toUpperCase().contains("F")) {
                     modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
                 } else {
-                    Toast.makeText(mContext, "e.g(A+,A,A-,B+,B,B-,C+,C,C-,D+,D,D-,F)", Toast.LENGTH_LONG).show();
+                    holder.mGradeLayout.setError("e.g(A+,A,A-,B+,B,B-,C+,C,C-,D+,D,D-,F)");
+//                    Toast.makeText(mContext, "e.g(A+,A,A-,B+,B,B-,C+,C,C-,D+,D,D-,F)", Toast.LENGTH_LONG).show();
                 }
 
 
