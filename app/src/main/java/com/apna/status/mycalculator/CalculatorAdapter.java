@@ -63,7 +63,14 @@ public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorAdapter.Vi
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.d("afterTextChanged", "afterTextChanged: " + s.toString());
-                modelCalculatorArrayList.get(position).setCredits(Integer.parseInt(s.toString()));
+                int number = 0;
+                try {
+                    number = Integer.parseInt(s.toString());
+                } catch (NumberFormatException nfe) {
+                    nfe.printStackTrace();
+                }
+
+                modelCalculatorArrayList.get(position).setCredits(number);
             }
 
             @Override
@@ -71,6 +78,12 @@ public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorAdapter.Vi
                 Log.d("afterTextChanged", "afterTextChanged: " + s.toString());
             }
         });
+
+
+//        String text = holder.mGradeLayout.getSelectedItem().toString();
+//        modelCalculatorArrayList.get(position).setGrade(text);
+
+
         holder.mGradeLayout.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -80,7 +93,38 @@ public class CalculatorAdapter extends RecyclerView.Adapter<CalculatorAdapter.Vi
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                modelCalculatorArrayList.get(position).setGrade(s.toString());
+
+                if (s.toString().toUpperCase().contains("A+")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("A")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("A-")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("B+")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("B")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("B-")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("C+")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("C")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("C-")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("D+")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("D")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("D-")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else if (s.toString().toUpperCase().contains("F")) {
+                    modelCalculatorArrayList.get(position).setGrade(s.toString().toUpperCase());
+                } else {
+                    Toast.makeText(mContext, "e.g(A+,A,A-,B+,B,B-,C+,C,C-,D+,D,D-,F)", Toast.LENGTH_LONG).show();
+                }
+
+
             }
 
             @Override
